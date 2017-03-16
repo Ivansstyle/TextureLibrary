@@ -13,11 +13,11 @@
 #define MAXTEXTURES 10
 
 
-class AbstractTexture:
+class AbstractTexture
 {
 public:
-  Texture() = default;
-  ~Texture() = default;
+  AbstractTexture() = default ;
+  ~AbstractTexture() = default ;
 
 
 
@@ -30,23 +30,34 @@ public:
 private:
   GLuint m_width, m_height;
   GLuint m_texType;
-  GLbool m_multitex;
+  bool m_multitex;
 
 
 
 };
 
-class simpleTexture: public AbstractTexture
-{
-
-};
-
-class MultiTexture: public AbstractTexture
-
-
+class SimpleTexture: public AbstractTexture
 {
 public:
+ virtual bool loadImage() override;
+ virtual bool deleteTexture() override;
+ virtual void bindTexture() override;
 
+
+  int a;
+private:
+  int ab;
+
+};
+
+
+
+class MultiTexture: public AbstractTexture
+{
+public:
+  virtual bool loadImage() override;
+  virtual bool deleteTexture() override;
+  virtual void bindTexture() override;
 
 private:
   GLuint m_texNames[MAXTEXTURES];
