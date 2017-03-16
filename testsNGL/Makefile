@@ -15,7 +15,7 @@ CXX           = g++
 DEFINES       = -DQT5BUILD -DQT5BUILD -DNGL_DEBUG -DQT_QML_DEBUG -DQT_OPENGL_LIB -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
 CFLAGS        = -pipe -g -Wall -W -D_REENTRANT -fPIC $(DEFINES)
 CXXFLAGS      = -pipe -msse -msse2 -msse3 -march=native -march=native -g -std=gnu++11 -Wall -W -Wno-unused-parameter -D_REENTRANT -fPIC $(DEFINES)
-INCPATH       = -I. -Iinclude -I../../../../NGL/include -I/opt/Qt5.7.0/5.7/gcc_64/include -I/opt/Qt5.7.0/5.7/gcc_64/include/QtOpenGL -I/opt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/Qt5.7.0/5.7/gcc_64/include/QtCore -Imoc -I/opt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++
+INCPATH       = -I. -Iinclude -Itests -I../mTex/include -I../../../NGL/include -I/opt/Qt5.7.0/5.7/gcc_64/include -I/opt/Qt5.7.0/5.7/gcc_64/include/QtOpenGL -I/opt/Qt5.7.0/5.7/gcc_64/include/QtWidgets -I/opt/Qt5.7.0/5.7/gcc_64/include/QtGui -I/opt/Qt5.7.0/5.7/gcc_64/include/QtCore -Imoc -I/opt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++
 QMAKE         = /opt/Qt5.7.0/5.7/gcc_64/bin/qmake
 DEL_FILE      = rm -f
 CHK_DIR_EXISTS= test -d
@@ -33,10 +33,10 @@ MOVE          = mv -f
 TAR           = tar -cf
 COMPRESS      = gzip -9f
 DISTNAME      = VAOSphere1.0.0
-DISTDIR = /home/i7436224/Projects/Resources/VertexArrayObject/VAOSphere/obj/VAOSphere1.0.0
+DISTDIR = /home/i7436224/Projects/TextureLibrary/testsNGL/obj/VAOSphere1.0.0
 LINK          = g++
-LFLAGS        = -Wl,-z,origin -Wl,-rpath,\$$ORIGIN/L/home/i7436224/NGL/lib -Wl,-rpath,/home/i7436224/NGL/lib -Wl,-rpath,/opt/Qt5.7.0/5.7/gcc_64/lib
-LIBS          = $(SUBLIBS) -L/usr/local/lib -L/home/i7436224/NGL/lib -l NGL -ltiff -L/opt/Qt5.7.0/5.7/gcc_64/lib -lQt5OpenGL -L/usr/lib64 -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
+LFLAGS        = -Wl,-rpath,/home/i7436224/Projects/TextureLibrary/testsNGL/../mTex/lib -Wl,-z,origin -Wl,-rpath,\$$ORIGIN/L/home/i7436224/NGL/lib -Wl,-rpath,/home/i7436224/NGL/lib -Wl,-rpath,/opt/Qt5.7.0/5.7/gcc_64/lib
+LIBS          = $(SUBLIBS) -L ../mTex/lib -lmTex -L/usr/local/lib -L/home/i7436224/NGL/lib -l NGL -ltiff -L/opt/Qt5.7.0/5.7/gcc_64/lib -lQt5OpenGL -L/usr/lib64 -lQt5Widgets -lQt5Gui -lQt5Core -lGL -lpthread 
 AR            = ar cqs
 RANLIB        = 
 SED           = sed
@@ -189,7 +189,7 @@ DIST          = /opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_pre.prf \
 		/opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_post.prf \
 		/opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/default_pre.prf \
-		../../../../NGL/UseNGL.pri \
+		../../../NGL/UseNGL.pri \
 		/opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/resolve_config.prf \
 		/opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/default_post.prf \
 		/opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/qml_debug.prf \
@@ -356,7 +356,7 @@ Makefile: VAOSphere.pro .qmake.cache /opt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++/q
 		/opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_post.prf \
 		/opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/exclusive_builds.prf \
 		/opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/default_pre.prf \
-		../../../../NGL/UseNGL.pri \
+		../../../NGL/UseNGL.pri \
 		/opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/resolve_config.prf \
 		/opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/default_post.prf \
 		/opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/qml_debug.prf \
@@ -515,7 +515,7 @@ Makefile: VAOSphere.pro .qmake.cache /opt/Qt5.7.0/5.7/gcc_64/mkspecs/linux-g++/q
 /opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/spec_post.prf:
 /opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/exclusive_builds.prf:
 /opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/default_pre.prf:
-../../../../NGL/UseNGL.pri:
+../../../NGL/UseNGL.pri:
 /opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/resolve_config.prf:
 /opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/default_post.prf:
 /opt/Qt5.7.0/5.7/gcc_64/mkspecs/features/qml_debug.prf:
@@ -676,9 +676,9 @@ obj/NGLScene.o: src/NGLScene.cpp /opt/Qt5.7.0/5.7/gcc_64/include/QtGui/QMouseEve
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtCore/qeventloop.h \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtGui/qinputmethod.h \
 		include/NGLScene.h \
-		../../../../NGL/include/ngl/AbstractVAO.h \
-		../../../../NGL/include/ngl/Types.h \
-		../../../../NGL/include/ngl/glew.h \
+		../../../NGL/include/ngl/AbstractVAO.h \
+		../../../NGL/include/ngl/Types.h \
+		../../../NGL/include/ngl/glew.h \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtOpenGL/QGLContext \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtOpenGL/qgl.h \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtGui/qopengl.h \
@@ -713,20 +713,20 @@ obj/NGLScene.o: src/NGLScene.cpp /opt/Qt5.7.0/5.7/gcc_64/include/QtGui/QMouseEve
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtOpenGL/qtopenglglobal.h \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtGui/QSurfaceFormat \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtGui/qsurfaceformat.h \
-		../../../../NGL/include/ngl/Camera.h \
-		../../../../NGL/include/ngl/Vec4.h \
-		../../../../NGL/include/ngl/Vec2.h \
-		../../../../NGL/include/ngl/Vec3.h \
-		../../../../NGL/include/ngl/Mat4.h \
-		../../../../NGL/include/ngl/RibExport.h \
-		../../../../NGL/include/ngl/Plane.h \
-		../../../../NGL/include/ngl/AABB.h \
-		../../../../NGL/include/ngl/BBox.h \
-		../../../../NGL/include/ngl/Colour.h \
-		../../../../NGL/include/ngl/Light.h \
-		../../../../NGL/include/ngl/Text.h \
-		../../../../NGL/include/ngl/VAOFactory.h \
-		../../../../NGL/include/ngl/SimpleVAO.h \
+		../../../NGL/include/ngl/Camera.h \
+		../../../NGL/include/ngl/Vec4.h \
+		../../../NGL/include/ngl/Vec2.h \
+		../../../NGL/include/ngl/Vec3.h \
+		../../../NGL/include/ngl/Mat4.h \
+		../../../NGL/include/ngl/RibExport.h \
+		../../../NGL/include/ngl/Plane.h \
+		../../../NGL/include/ngl/AABB.h \
+		../../../NGL/include/ngl/BBox.h \
+		../../../NGL/include/ngl/Colour.h \
+		../../../NGL/include/ngl/Light.h \
+		../../../NGL/include/ngl/Text.h \
+		../../../NGL/include/ngl/VAOFactory.h \
+		../../../NGL/include/ngl/SimpleVAO.h \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtGui/QFont \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtGui/QOpenGLWindow \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtGui/qopenglwindow.h \
@@ -747,18 +747,17 @@ obj/NGLScene.o: src/NGLScene.cpp /opt/Qt5.7.0/5.7/gcc_64/include/QtGui/QMouseEve
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtGui/qopenglversionfunctions.h \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtGui/QImage \
 		include/WindowParams.h \
-		../../../../NGL/include/ngl/Transformation.h \
-		../../../../NGL/include/ngl/NGLassert.h \
-		../../../../NGL/include/ngl/Texture.h \
-		../../../../NGL/include/ngl/Image.h \
-		../../../../NGL/include/ngl/NGLInit.h \
-		../../../../NGL/include/ngl/Singleton.h \
-		../../../../NGL/include/ngl/VAOPrimitives.h \
-		../../../../NGL/include/ngl/ShaderLib.h \
-		../../../../NGL/include/ngl/Shader.h \
-		../../../../NGL/include/ngl/ShaderProgram.h \
-		../../../../NGL/include/ngl/Util.h \
-		../../../../NGL/include/ngl/Mat3.h
+		../../../NGL/include/ngl/Transformation.h \
+		../../../NGL/include/ngl/NGLassert.h \
+		../../../NGL/include/ngl/NGLInit.h \
+		../../../NGL/include/ngl/Singleton.h \
+		../../../NGL/include/ngl/VAOPrimitives.h \
+		../../../NGL/include/ngl/ShaderLib.h \
+		../../../NGL/include/ngl/Shader.h \
+		../../../NGL/include/ngl/ShaderProgram.h \
+		../../../NGL/include/ngl/Util.h \
+		../../../NGL/include/ngl/Mat3.h \
+		../mTex/include/texture.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o obj/NGLScene.o src/NGLScene.cpp
 
 obj/main.o: src/main.cpp /opt/Qt5.7.0/5.7/gcc_64/include/QtGui/QGuiApplication \
@@ -831,9 +830,9 @@ obj/main.o: src/main.cpp /opt/Qt5.7.0/5.7/gcc_64/include/QtGui/QGuiApplication \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsharedpointer_impl.h \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtCore/qsize.h \
 		include/NGLScene.h \
-		../../../../NGL/include/ngl/AbstractVAO.h \
-		../../../../NGL/include/ngl/Types.h \
-		../../../../NGL/include/ngl/glew.h \
+		../../../NGL/include/ngl/AbstractVAO.h \
+		../../../NGL/include/ngl/Types.h \
+		../../../NGL/include/ngl/glew.h \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtOpenGL/QGLContext \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtOpenGL/qgl.h \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtGui/qopengl.h \
@@ -880,20 +879,20 @@ obj/main.o: src/main.cpp /opt/Qt5.7.0/5.7/gcc_64/include/QtGui/QGuiApplication \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtOpenGL/qtopenglglobal.h \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtGui/QSurfaceFormat \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtGui/qsurfaceformat.h \
-		../../../../NGL/include/ngl/Camera.h \
-		../../../../NGL/include/ngl/Vec4.h \
-		../../../../NGL/include/ngl/Vec2.h \
-		../../../../NGL/include/ngl/Vec3.h \
-		../../../../NGL/include/ngl/Mat4.h \
-		../../../../NGL/include/ngl/RibExport.h \
-		../../../../NGL/include/ngl/Plane.h \
-		../../../../NGL/include/ngl/AABB.h \
-		../../../../NGL/include/ngl/BBox.h \
-		../../../../NGL/include/ngl/Colour.h \
-		../../../../NGL/include/ngl/Light.h \
-		../../../../NGL/include/ngl/Text.h \
-		../../../../NGL/include/ngl/VAOFactory.h \
-		../../../../NGL/include/ngl/SimpleVAO.h \
+		../../../NGL/include/ngl/Camera.h \
+		../../../NGL/include/ngl/Vec4.h \
+		../../../NGL/include/ngl/Vec2.h \
+		../../../NGL/include/ngl/Vec3.h \
+		../../../NGL/include/ngl/Mat4.h \
+		../../../NGL/include/ngl/RibExport.h \
+		../../../NGL/include/ngl/Plane.h \
+		../../../NGL/include/ngl/AABB.h \
+		../../../NGL/include/ngl/BBox.h \
+		../../../NGL/include/ngl/Colour.h \
+		../../../NGL/include/ngl/Light.h \
+		../../../NGL/include/ngl/Text.h \
+		../../../NGL/include/ngl/VAOFactory.h \
+		../../../NGL/include/ngl/SimpleVAO.h \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtGui/QFont \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtGui/QOpenGLWindow \
 		/opt/Qt5.7.0/5.7/gcc_64/include/QtGui/qopenglwindow.h \

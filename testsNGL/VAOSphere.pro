@@ -16,15 +16,12 @@ MOC_DIR=moc
 CONFIG-=app_bundle
 # Auto include all .cpp files in the project src directory (can specifiy individually if required)
 SOURCES+= $$PWD/src/NGLScene.cpp    \
-					$$PWD/src/main.cpp \
-    src/texture.cpp \
-    src/texturemanager.cpp
+                                        $$PWD/src/main.cpp
 
 # same for the .h files
 HEADERS+= $$PWD/include/NGLScene.h \
-          $$PWD/include/WindowParams.h \
-    include/texture.h \
-    include/texturemanager.h
+          $$PWD/include/WindowParams.h
+
 
 
 # and add the include dir into the search path for Qt and make
@@ -35,7 +32,16 @@ INCLUDEPATH +=./include \
 DESTDIR=./
 # add the glsl shader files
 OTHER_FILES+= shaders/*.glsl \
-							README.md
+                        README.md
+
+
+# INCLUDING MTEX LIBRARY
+INCLUDEPATH += ../mTex/include
+DEPENDPATH += ../mTex/include
+LIBS += -L ../mTex/lib -lmTex
+QMAKE_RPATHDIR += $$PWD/../mTex/lib
+
+
 # were are going to default to a console app
 CONFIG += console
 # note each command you add needs a ; as it will be run as a single line
@@ -56,6 +62,8 @@ CONFIG += console
 	# now add it as an extra target
 	QMAKE_EXTRA_TARGETS += first copydata
 }
+
+
 NGLPATH=$$(NGLDIR)
 isEmpty(NGLPATH){ # note brace must be here
 	message("including $HOME/NGL")
