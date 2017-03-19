@@ -1,5 +1,5 @@
 # This specifies the exe name
-TARGET=VAOSphere
+TARGET=app.bin
 # where to put the .o files
 OBJECTS_DIR=obj
 # core Qt Libs to use add more here if needed.
@@ -32,13 +32,13 @@ INCLUDEPATH +=./include \
 DESTDIR=./
 # add the glsl shader files
 OTHER_FILES+= shaders/*.glsl \
-                        README.md
+              app
 
 
 # INCLUDING MTEX LIBRARY
 INCLUDEPATH += ../mTex/include
 DEPENDPATH += ../mTex/include
-LIBS += -L ../mTex/lib -lmTex
+LIBS += -L../mTex/lib -lmTex
 QMAKE_RPATHDIR += $$PWD/../mTex/lib
 
 

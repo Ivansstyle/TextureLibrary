@@ -5,7 +5,7 @@
 #include <ngl/Camera.h>
 #include <ngl/Light.h>
 #include <ngl/Transformation.h>
-//#include <ngl/Texture.h>
+#include <ngl/Texture.h>
 #include <ngl/NGLInit.h>
 #include <ngl/ShaderLib.h>
 #include <ngl/VAOFactory.h>
@@ -187,15 +187,16 @@ void NGLScene::initializeGL()
 	buildVAOSphere();
 	// load and set a texture
 
-	SimpleTexture a;
+//	SimpleTexture a;
+  //  a.bindTexture();
 	///////////////////////////////////// TEXTURES /////////////////////
 
 
 
 
-	    //ngl::Texture t("textures/earth.png");
+        ngl::Texture t("textures/asya.jpg");
 
-	    //t.setTextureGL();
+        t.setTextureGL();
 
 }
 

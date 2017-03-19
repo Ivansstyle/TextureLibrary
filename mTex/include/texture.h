@@ -10,7 +10,11 @@
 
 
 #include <string>
-#include <GL/gl.h>
+
+// LAB build
+//#include <GL/gl.h>
+
+#include <OpenGL.h>
 
 
 #define MAXTEXTURES 10
