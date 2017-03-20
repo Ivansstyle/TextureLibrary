@@ -6,28 +6,32 @@
 ///
 ///
 
-
 #include <string>
+// has to be included before gl because of glew
+#include <ngl/Image.h>
 
+// GL includes
 #ifdef __linux__
 
   // LAB build
-  #include <ngl/Image.h>
   #include <GL/gl.h>
 
 #else
 {
 // Mac build
-//#include <OpenGL.h>
+#include <OpenGL.h>
 }
 #endif
 
+// NGL Includes
 
 // Maxtextures idk why i need that
 #define MAXTEXTURES 10
 
 ///
-/// \brief The AbstractTexture class
+/// @class AbstractTexture
+/// \brief The AbstractTexture class, wraps different texture types
+/// to work with management class
 ///
 ///
 class AbstractTexture
@@ -35,7 +39,8 @@ class AbstractTexture
 public:
   AbstractTexture() = default ;
   ~AbstractTexture() = default ;
-
+  virtual bool operator==(const AbstractTexture& other) = 0;
+  virtual bool operator!=(const AbstractTexture& other) = 0;
 
 
 
@@ -43,12 +48,14 @@ public:
   virtual bool deleteTexture() = 0;
   virtual void bindTexture() = 0;
 
+
 private:
 
 
 protected:
-
-  GLuint m_texID;
+  int m_ID;
+  bool m_createdFlag;
+  GLuint m_glTexID;
   ngl::Image m_texImage;
   GLuint m_width, m_height;
   GLuint m_texType;
@@ -66,7 +73,9 @@ class SimpleTexture: public AbstractTexture
 public:
 
   SimpleTexture() = default;
-  SimpleTexture(std::string &_file);
+  SimpleTexture(const std::string &_file);
+  bool operator==(const SimpleTexture& other) override;
+  bool operator!=(const SimpleTexture& other) override;
 
 
   virtual bool loadImage(const std::string &_file) override;
@@ -85,6 +94,9 @@ class CompressedTexture: public AbstractTexture
 
 public:
 
+   CompressedTexture(const std::string &_file);
+  bool operator==(const CompressedTexture& other) override;
+  bool operator!=(const CompressedTexture& other) ;
   virtual bool loadImage(const std::string &_file) override;
   virtual bool deleteTexture() override;
   virtual void bindTexture() override;
@@ -101,11 +113,16 @@ private:
 class MultiTexture: public AbstractTexture
 {
 public:
-  virtual bool loadImage(const std::string &_file) override;
+
+   MultiTexture(const std::string &_file);
+   bool operator==(const MultiTexture& other) override;
+   bool operator!=(const MultiTexture& other) override;
+
   virtual bool deleteTexture() override;
   virtual void bindTexture() override;
 
 private:
+  virtual bool loadImage(const std::string &_file) override;
   GLuint m_texNames[MAXTEXTURES];
 
 };
