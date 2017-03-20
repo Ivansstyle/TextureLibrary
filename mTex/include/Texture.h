@@ -29,6 +29,7 @@
 #define MAXTEXTURES 10
 
 ///
+///
 /// @class AbstractTexture
 /// \brief The AbstractTexture class, wraps different texture types
 /// to work with management class
