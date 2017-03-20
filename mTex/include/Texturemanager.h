@@ -3,7 +3,7 @@
 
 #include <vector>
 #include <string>
-#include "texture.h"
+#include "Texture.h"
 //singlton
 class TextureManager
 {

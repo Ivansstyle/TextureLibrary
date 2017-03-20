@@ -11,7 +11,8 @@
 #include <ngl/VAOFactory.h>
 #include <ngl/SimpleVAO.h>
 #include  <cstddef>
-#include "texture.h"
+#include <Texturemanager.h>
+#include <Texture.h>
 
 
 NGLScene::NGLScene()
@@ -187,16 +188,21 @@ void NGLScene::initializeGL()
 	buildVAOSphere();
 	// load and set a texture
 
-//	SimpleTexture a;
-  //  a.bindTexture();
+
+	SimpleTexture a;
+	a.loadImage("textures/asya.jpg");
+	a.bindTexture();
+
+//SimpleTexture a;
+//a.bindTexture();
 	///////////////////////////////////// TEXTURES /////////////////////
 
 
 
 
-        ngl::Texture t("textures/asya.jpg");
+        //ngl::Texture t("textures/asya.jpg");
 
-        t.setTextureGL();
+        //t.setTextureGL();
 
 }
 

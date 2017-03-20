@@ -2,6 +2,8 @@
 TARGET=app.bin
 # where to put the .o files
 OBJECTS_DIR=obj
+
+
 # core Qt Libs to use add more here if needed.
 QT+=gui opengl core
 # as I want to support 4.8 and 5 this will set a flag for some of the mac stuff
@@ -35,7 +37,9 @@ OTHER_FILES+= shaders/*.glsl \
               app
 
 
+# ------------------------------------------------------------------------------------------
 # INCLUDING MTEX LIBRARY
+# ------------------------------------------------------------------------------------------
 INCLUDEPATH += ../mTex/include
 DEPENDPATH += ../mTex/include
 LIBS += -L../mTex/lib -lmTex
@@ -63,7 +67,7 @@ CONFIG += console
 	QMAKE_EXTRA_TARGETS += first copydata
 }
 
-
+# NGL inludes
 NGLPATH=$$(NGLDIR)
 isEmpty(NGLPATH){ # note brace must be here
 	message("including $HOME/NGL")
